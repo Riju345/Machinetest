@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirm Delete</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .confirmation-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+        .confirmation-container h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .confirmation-container p {
+            font-size: 16px;
+            color: #555;
+        }
+        .confirmation-container p strong {
+            font-weight: bold;
+            color: #000;
+        }
+        .confirmation-container form {
+            margin-top: 20px;
+        }
+        .confirmation-container button,
+        .confirmation-container a {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-decoration: none;
+            margin: 5px;
+        }
+        .confirmation-container button {
+            background-color: #dc3545;
+            color: #fff;
+            cursor: pointer;
+        }
+        .confirmation-container button:hover {
+            background-color: #c82333;
+        }
+        .confirmation-container a {
+            background-color: #6c757d;
+            color: #fff;
+        }
+        .confirmation-container a:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="confirmation-container">
+        <h2>Are you sure you want to delete this task?</h2>
+        <p><strong>{{ task.title }}</strong> - {{ task.description }}</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Yes, delete</button>
+            <a href="{% url 'task_list' %}">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
